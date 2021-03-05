@@ -1,0 +1,81 @@
+<br><br>
+<p>Foo Place</p>
+
+<%# after submit, params hash will include "name": "value" %>
+
+<form action="/foo" method="post" class="form1" >
+  <label for="fname">First name:</label><br>
+  <input type="text" id="fname" name="fname" value="John"><br>
+  <label for="lname">Last name:</label><br>
+  <input type="text" id="lname" name="lname" value="Doe"><br><br>
+
+  <p>favorite color:</p>
+  <input type="radio" id="red" name="color" value="red">
+  <label for="red">Red</label><br>
+  <input type="radio" id="green" name="color" value="green" autofocus checked></input>
+  <label for="red">Green</label><br>
+  <input type="radio" id="blue" name="color" value="blue"></input>
+  <label for="red">Blue</label><br>
+  <br>
+  <input type="radio" id="blue" name="user[:color]" value="blue"></input><br>
+  <input type="radio" id="green" name="user[:color]" value="green"></input><br>
+
+
+  <label for="red">I agree to donate my sanity so that the Old Ones may rise.</label><br>
+  <%# if checked, name will = value, or "on" if there's no value field %>
+  <input type="checkbox" id="hi" name="sanitycheck" value="wtf"></input><br>
+
+  <input type="submit" name="doievenmatter" value="thiscouldmatterifmanysubmits"></input> <br></br>
+</form>
+<%# these 2 lines are the same: (/foo is the current page) %>
+<%# form_with(url: "/foo", method: :post) do |form| %>
+<%# form_with do |form| %>
+
+  <aside style="float:left;color:<%=params["color"]%>; background-color:<%=params["color2"]%>">
+    <%= form_with(url: "/foo", method: :post, class: "aside_form", scope: "hello") do |form| %>
+      <%= form.label :area, "Write stuff: " %>
+      <%= form.text_area :area %><br>
+      <%= form.select :color, ["Red", "Green", "Blue"] %><br>
+      <%= form.select :color2, ["Red", "Green", "Blue"] %><br>
+      <%# form.select :color2, [["Red", "R"], ["Green", "G"], ["Blue", "B"]] %>
+      <%= form.select :city,
+      {
+        "Europe" => [ ["Berlin", "BE"], ["Madrid", "MD"] ],
+        "North America" => [ ["Chicago", "CHI"] ],
+      },
+      selected: "CHI" %><br>
+      <%= form.time_zone_select :time_zone %><br>
+      <%= form.date_select :birth_date %><br>
+
+      <%= form.submit "changecolor" %>
+
+
+    <% end %>
+  </aside>
+  <% style = "background-color:#{%w(lightcyan lightgreen lightblue).sample};" %>
+  <div class="form3div" style=<%= style %>>
+<%= form_with(url: "/foo", method: :post, class: "form3") do |form| %>
+  <%= form.label :fname, "First name:" %>
+  <%= form.text_field :fname %>
+  <%= form.label :color, "red" %>
+  <%= form.radio_button :color, "red" %>
+  <%= form.label :color, "green" %>
+  <%= form.radio_button :color, "green" %>
+  <%= form.label :color, "blue" %>
+  <%= form.radio_button :color, "blue" %>
+  <%= form.check_box :pet_cat %>
+
+  <%= form.label :pet_cat, "I have a pet cat" %>
+
+
+  <%= form.submit "Submit" %>
+<% end %>
+  </div>
+<%= form_with url: "/foo", multipart: true do |form| %>
+  <%= form.file_field :picture %>
+  <%= form.submit "Submit" %>
+<% end %>
+
+
+  
+<%=params %>

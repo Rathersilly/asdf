@@ -1,0 +1,32 @@
+<%= render 'layouts/header' %>
+<H1>Welcome to this place!</H1>
+<%= link_to 'Foo', foo_path %>
+
+<div class="body_column">
+
+  <%= @posts.each do |post| %>
+    <div class="post_container">
+      <h4><%= post.title %></h4>
+      
+      <p><%= post.content %></p>
+      <h
+      5><%= post.user %></h6>
+      <% post.comments.each do |comment| %>
+        <% if comment.parent == nil %>
+          <div class="comment" >
+        
+            <p><%= comment.content %></p>
+            <p><%= comment.user %></p>
+            <% comment.children.each do  |child | %>
+              <div class="comment">
+                <p><%= child.content %></p>
+                <p><%= child.user %></p>
+              </div>
+            <% end %>
+
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

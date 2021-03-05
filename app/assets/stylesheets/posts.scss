@@ -1,0 +1,60 @@
+// Place all the styles related to the Posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+body {
+  background-color: beige;
+  margin: 0;
+}
+header {
+  background-color: black;
+  color: white;
+  height: 40px;
+  font-size: 16pt;
+}
+.nav {
+  height: 100%;
+
+
+}
+.nav_left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  float: left;
+  margin: auto;
+
+}
+.nav_right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  float: right;
+  margin: auto;
+
+}
+.nav_item {
+  margin-left: 10px;
+  margin-right: 10px;
+  
+}
+.asdf {
+  margin-left: 100px;
+}
+  
+h1 {
+  text-align: center;
+}
+.post_container {
+  margin: 20px;
+  border: 2px solid black;
+}
+.comment {
+  margin: 20px;
+  border: 2px solid green;
+}
+
+.body_column {
+  background-color: snow;
+  margin-left: 20%;
+  margin-right: 20%;
+}

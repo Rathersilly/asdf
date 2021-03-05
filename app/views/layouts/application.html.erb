@@ -11,6 +11,13 @@
   </head>
 
   <body>
+    <% flash.each do |msg_type, msg| %>
+      <h2><%= msg_type%>: <%= msg %></h2> 
+    <% end %>
     <%= yield %>
+    <%= params.inspect %>
+    <%= session.inspect %>
+    <%= session.class %>
+
   </body>
 </html>
