@@ -1,0 +1,25 @@
+<%= form_with(model: sit) do |form| %>
+  <% if sit.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sit.errors.count, "error") %> prohibited this sit from being saved:</h2>
+
+      <ul>
+        <% sit.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= form.collection_select :person_id, Person.all, :id, :name %>
+  <%= form.collection_select :sitter_id, Sitter.all, :id, :name %>
+
+  <%= form.label :date %>
+  <%= form.datetime_select :date %>
+  <%# form.label :duration %>
+  <%# form.time_select :duration %>
+  <%= form.label :untiltime %>
+  <%= form.datetime_select :untiltime %>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

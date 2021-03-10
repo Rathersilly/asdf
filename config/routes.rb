@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :sits
+  resources :sitters
+  resources :pets
+  resources :people
+  get 'asdf/new'
   resources :users
   resources :posts
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

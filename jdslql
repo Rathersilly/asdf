@@ -1,0 +1,10 @@
+NilClass.in not found, maybe you meant:
+
+NilClass#inspect
+NilClass#instance_eval
+NilClass#instance_exec
+NilClass#instance_of?
+NilClass#instance_variable_defined?
+NilClass#instance_variable_get
+NilClass#instance_variable_set
+NilClass#instance_variables
