@@ -12,7 +12,7 @@
   <tbody>
     <% @sitters.each do |sitter| %>
       <tr>
-        <td>sitter.name</td>
+        <td><%= sitter.name %></td>
         <td><%= link_to 'Show', sitter %></td>
         <td><%= link_to 'Edit', edit_sitter_path(sitter) %></td>
         <td><%= link_to 'Destroy', sitter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
